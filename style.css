@@ -1,0 +1,117 @@
+body, h1, h2, h3, h4, h5, h6, p, a, li {
+    font-family: "SF Pro Text", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: "SF Pro Display", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+h2:hover{
+    color:#f39c12;
+    transition: color 0.3s ease-in-out;
+}
+h1:hover{
+    color:#f39c12;
+    transform: color 0.3s ease-in-out;
+}
+
+
+
+
+header{
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-link:hover {
+    color: #f39c12; 
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-icon {
+    color: white;
+    transition: color 0.3s ease-in-out;
+}
+.footer-icon:hover {
+    color: #f39c12;
+}
+
+section{
+    margin-bottom: 40px;
+}
+
+#about,#projects,#contact{
+    padding: 40px;
+    margin-top: 20px;
+}
+
+
+#about {
+    background-color: #f8f9fa; 
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 40px;
+ 
+}
+#education {
+    background-color: #f8f9fa; 
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 40px;
+ 
+}
+
+#projects {
+    background-color: #f8f9fa; /* Slightly darker gray */
+    border-radius: 8px;
+    padding: 40px;
+    margin-top: 20px;
+}
+
+#contact {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.btn-custom {
+    background-color: #f39c12; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-custom:hover {
+    background-color: #e67e22; 
+}
+
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #about, #projects, #contact {
+        padding: 20px;
+    }
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
