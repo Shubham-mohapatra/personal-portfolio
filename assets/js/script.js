@@ -14,7 +14,7 @@ document.querySelectorAll('a.nav-link').forEach(anchor => {
                 });
             
                 typewriter
-                    .typeString('Hello, world!')
+                    .typeString('Hey')
                     .pauseFor(2000)
                     .deleteAll()
                     .typeString('Welcome to my portfolio!')
@@ -33,12 +33,12 @@ document.querySelectorAll('a.nav-link').forEach(anchor => {
             }
         } else {
             console.log(`Non-anchor link detected: ${href}`);
-            // Let the default behavior occur for non-anchor links
+            
         }
     });
 });
 
-// Back to Top Button
+
 const backToTopButton = document.createElement('button');
 backToTopButton.textContent = "↑";
 backToTopButton.id = "backToTop";
@@ -49,7 +49,7 @@ backToTopButton.style.cssText = `
     padding: 10px 15px;
     font-size: 20px;
     display: none;
-    background-color: #f39c12;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
