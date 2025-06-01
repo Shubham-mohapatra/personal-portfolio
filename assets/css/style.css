@@ -1,122 +1,474 @@
-body, h1, h2, h3, h4, h5, h6, p, a, li {
-    font-family: "SF Pro Text", "Roboto", "Helvetica Neue", Arial, sans-serif;
+:root {
+  --primary-color: #f39c12;
+  --secondary-color: #e67e22;
+  --light-bg: #ffffff;
+  --light-text: #000000;
+  --dark-bg: #121212;
+  --dark-section-bg: #1e1e1e;
+  --dark-text: #f1f1f1;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease-in-out;
+}
+
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("../fonts/a34f9d1faa5f3315-s.p.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+body {
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 h1, h2, h3 {
-    font-family: "SF Pro Display", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: "SF Pro Display", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  transition: color 0.3s ease;
 }
 
-h2:hover {
-    color: #f39c12;
-    transition: color 0.3s ease-in-out;
+h1:hover, h2:hover {
+  color: var(--primary-color);
 }
 
-h1:hover {
-    color: #f39c12;
-    transition: color 0.3s ease-in-out;
-}
-
-
-@font-face {
-    font-family: "SF Pro Text"; /* Define the font name */
-    src: url("../fonts/a34f9d1faa5f3315-s.p.woff2") format("woff2"); /* Correct the src property */
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Header */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+/* ===== Navbar Styles ===== */
+.navbar-nav {
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.nav-link {
+  transition: var(--transition);
 }
 
 .nav-link:hover {
-    color: #f39c12;
-    transition: color 0.3s ease-in-out;
+  color: var(--primary-color) !important;
 }
 
-/* Footer Icons */
-.footer-icon {
-    color: white;
-    transition: color 0.3s ease-in-out;
+/* ===== Dark Mode Toggle Styles ===== */
+.dark-mode-container {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
 }
 
-.footer-icon:hover {
-    color: #f39c12;
+input[type="checkbox"] {
+  display: none;
 }
 
-/* Sections */
+.display {
+  width: 60px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  position: relative;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+label {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  background: #F3F3F3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease;
+}
+
+.sun {
+  color: #FFD600;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.moon {
+  position: absolute;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+input[type=checkbox]:checked + .display {
+  background: transparent;
+}
+
+input[type=checkbox]:checked + .display label {
+  background: #2C2C2F;
+}
+
+input[type=checkbox]:checked + .display label .circle {
+  left: calc(100% - 28px);
+  background: #4A4A4F;
+}
+
+input[type=checkbox]:checked + .display label .circle .sun {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+input[type=checkbox]:checked + .display label .circle .moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Section Styles ===== */
 section {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
+  padding: 40px;
+  border-radius: 8px;
+  transition: var(--transition);
 }
 
-#about, #projects, #contact {
-    padding: 40px;
-    margin-top: 20px;
+#about, #projects, #contact, #education {
+  background-color: transparent;
+  margin-top: 20px;
 }
 
-#about {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 40px;
-}
-
-#education {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 40px;
-}
-
-#projects {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 40px;
-}
-
-#contact {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 40px;
-}
-
-/* Button Styles */
+/* ===== Button Styles ===== */
 .btn-custom {
-    background-color: #f39c12;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease-in-out;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: var(--transition), transform 0.3s ease;
 }
 
 .btn-custom:hover {
-    background-color: #e67e22;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transform: scale(1.1);
 }
 
-/* Footer */
-footer {
-    margin-top: 20px;
+/* ===== Dark Mode Styles ===== */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-mode header {
+  background-color: var(--dark-section-bg);
+  box-shadow: var(--shadow-dark);
+}
+
+body.dark-mode footer {
+  background-color: var(--dark-section-bg);
+}
+
+body.dark-mode .card {
+  background-color: var(--dark-section-bg);
+  box-shadow: var(--shadow-dark);
+}
+
+body.dark-mode section {
+  background-color: var(--dark-section-bg);
+}
+
+body.dark-mode a {
+  color: var(--primary-color);
+}
+
+/* Additional styles moved from index.html */
+#typewriter {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-family: "Courier New", Courier, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    animation: typing 4s steps(30, end) forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+#typewriter h1 {
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+#typewriter h1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+#typewriter h1:hover::after {
+    transform: scaleX(1);
+}
+
+#typewrite::after {
+    content: '';
+    display: inline-block;
+    animation: blink 0.8s infinite;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    clip-path: circle();
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.fade-in-section {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-weight: bold;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
-/* Responsive Design */
+h2:hover, h1:hover {
+    color: #f39c12;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #f39c12 !important;
+    transition: color 0.3s;
+}
+
+#about, #education, #projects, #contact {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+}
+
+#education .education-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+}
+
+#education .education-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#education .education-years {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+#projects .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projects .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-button {
+    background-color: #f39c12;
+    color: #ffffff !important;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #f39c12;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.contact-button:hover {
+    background-color: transparent;
+    color: #f39c12 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Dark mode styles */
+.dark-mode .contact-button {
+    color: #ffffff !important;
+}
+
+.dark-mode .contact-button:hover {
+    color: #f39c12 !important;
+    background-color: transparent;
+}
+
+/* ===== Footer Styles ===== */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  transition: var(--transition);
+}
+
+.footer-icon {
+  color: white;
+  transition: color 0.3s;
+}
+
+.footer-icon:hover {
+  color: #f39c12;
+}
+
+/* ===== Animations ===== */
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logo-spin {
+  animation: logo-spin 0.6s ease-in-out;
+}
+
+/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
-    #about, #projects, #contact {
-        padding: 20px;
-    }
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-    h1 {
-        font-size: 2rem;
-    }
-    h2 {
+  section {
+      padding: 20px;
+      margin-bottom: 20px;
+  }
+
+  .navbar-brand {
+      font-size: 1.2rem;
+  }
+
+  h1 {
+      font-size: 2rem;
+  }
+
+  h2 {
+      font-size: 1.5rem;
+  }
+
+  .btn-custom {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+  }
+
+  .dark-mode-container {
+      margin: 1rem 0;
+  }
+
+  .navbar-nav {
+      gap: 0.5rem;
+  }
+
+  .navbar-brand {
         font-size: 1.5rem;
+        font-weight: 700;
     }
-    p {
-        font-size: 1rem;
-    }
+}
+
+/* Add this to your CSS file for the toggle animation */
+@keyframes toggleOn {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.2); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+.toggle-animation {
+    animation: toggleOn 0.3s ease-in-out;
 }
