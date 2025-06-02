@@ -62,7 +62,6 @@ header {
   transition: var(--transition);
 }
 
-/* ===== Navbar Styles ===== */
 .navbar-nav {
   align-items: center;
   gap: 1rem;
@@ -80,7 +79,7 @@ header {
   color: var(--primary-color) !important;
 }
 
-/* ===== Dark Mode Toggle Styles ===== */
+
 .dark-mode-container {
   display: flex;
   align-items: center;
@@ -233,7 +232,7 @@ body.dark-mode a {
   color: var(--primary-color);
 }
 
-/* Additional styles moved from index.html */
+
 #typewriter {
     display: inline-block;
     font-size: 1.2rem;
@@ -388,7 +387,7 @@ h2:hover, h1:hover {
     box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
 }
 
-/* Dark mode styles */
+
 .dark-mode .contact-button {
     color: #ffffff !important;
 }
@@ -398,7 +397,6 @@ h2:hover, h1:hover {
     background-color: transparent;
 }
 
-/* ===== Footer Styles ===== */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -414,7 +412,7 @@ footer {
   color: #f39c12;
 }
 
-/* ===== Animations ===== */
+
 @keyframes logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -424,7 +422,7 @@ footer {
   animation: logo-spin 0.6s ease-in-out;
 }
 
-/* ===== Responsive Design ===== */
+
 @media (max-width: 768px) {
   section {
       padding: 20px;
@@ -462,7 +460,7 @@ footer {
     }
 }
 
-/* Add this to your CSS file for the toggle animation */
+
 @keyframes toggleOn {
     0% { transform: translateY(-50%) scale(1); }
     50% { transform: translateY(-50%) scale(1.2); }
@@ -471,4 +469,85 @@ footer {
 
 .toggle-animation {
     animation: toggleOn 0.3s ease-in-out;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.timeline-content {
+    position: relative;
+    width: 45%;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    left: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    left: 0;
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+body.dark-mode .timeline-content {
+    background-color: var(--dark-section-bg);
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        left: 60px !important;
+    }
 }
