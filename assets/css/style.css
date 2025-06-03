@@ -34,6 +34,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
+  .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+  }
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -551,3 +562,64 @@ body.dark-mode .timeline-content {
         left: 60px !important;
     }
 }
+
+/* Skills Section Styles */
+#skills {
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.skills-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll 30s linear infinite;
+    padding: 2rem 0;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.skill-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem;
+    transition: transform 0.3s ease;
+}
+
+.skill-icon i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.skill-icon span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.skill-icon:hover {
+    transform: translateY(-10px);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
+/* Dark mode styles for skills */
+body.dark-mode .skill-icon i {
+    color: var(--primary-color);
+}
+
+body.dark-mode .skill-icon span {
+    color: var(--dark-text);
+}
+
